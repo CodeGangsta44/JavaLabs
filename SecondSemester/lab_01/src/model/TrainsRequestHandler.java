@@ -1,6 +1,5 @@
 package model;
 import java.util.Random;
-import java.util.ArrayList;
 
 
 
@@ -10,12 +9,12 @@ public class TrainsRequestHandler {
 
     public TrainsRequestHandler(){
         this.trains = new Train[15];
-        generateTrains(15);
+        //generateTrains(15);
     }
 
     public TrainsRequestHandler(int numberOfTrains){
         this.trains = new Train[numberOfTrains];
-        generateTrains(numberOfTrains);
+        //generateTrains(numberOfTrains);
     }
 
     public TrainsRequestHandler(String data){
@@ -36,8 +35,8 @@ public class TrainsRequestHandler {
 
     }
 
-    private void generateTrains(int numberOfTrains){
-        for (int i = 0; i < numberOfTrains; i++){
+    public void generateTrains(){
+        for (int i = 0; i < this.trains.length; i++){
             Random rand = new Random();
             String destination = cities[rand.nextInt(cities.length)];
             int number = rand.nextInt(100) + 1;
@@ -47,22 +46,42 @@ public class TrainsRequestHandler {
         }
     }
 
+    public void setCities(String[] cities){
+        this.cities = cities;
+    }
+
+    public String[] getCities() {
+        return this.cities;
+    }
+
     public Train[] hasSeats(){
-        ArrayList<Train> result = new ArrayList<Train>();
+        int counter = 0;
         for (Train i:trains){
-            if (i.getNumberOfSeats() > 0) result.add(i);
+            if (i.getNumberOfSeats() > 0) counter++;
         }
-        Train[] arrResult = new Train[result.size()];
-        return result.toArray(arrResult);
+
+        Train[] result = new Train[counter];
+
+        for (Train i:trains){
+            if (i.getNumberOfSeats() > 0) result[--counter] = i;
+        }
+        return result;
     }
 
     public Train[] hasDestAndTime(String destination, Time time){
-        ArrayList<Train> result = new ArrayList<Train>();
+        int counter = 0;
+
         for (Train i:trains){
-            if (i.getDestination().equals(destination) && i.getDepartureTime().afterThisTime(time)) result.add(i);
+            if (i.getDestination().equals(destination) && i.getDepartureTime().afterThisTime(time)) counter++;
         }
-        Train[] arrResult = new Train[result.size()];
-        return result.toArray(arrResult);
+
+        Train[] result = new Train[counter];
+
+        for (Train i:trains){
+            if (i.getDestination().equals(destination) && i.getDepartureTime().afterThisTime(time)) result[--counter] = i;
+        }
+
+        return result;
     }
 
     public Train[] getAllTrains(){

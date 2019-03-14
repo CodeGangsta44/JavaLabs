@@ -7,12 +7,16 @@ import java.io.*;
 import java.util.Scanner;
 
 public class ConsoleController implements Controller{
+
     private ConsoleTableTrainViewer viewer;
     private RailwayStationModel model;
+
     public ConsoleController(){
         this.viewer = new ConsoleTableTrainViewer();
         this.model = new RailwayStationModel();
+        this.model.setCities(readDataFromFile("./files/inputCities.txt").split("\n"));
     }
+
     @Override
     public void execute(){
         this.viewer.printString("Виконав Довгополюк Р.Р.(залікова книжка №8)\n");
@@ -21,33 +25,38 @@ public class ConsoleController implements Controller{
 
     }
 
+    @Override
     public void menu(){
 
-        while (true) {
-            this.viewer.printString("\nWhat do you want to do:\n");
-            this.viewer.printString("1 - show all trains\n");
-            this.viewer.printString("2 - make request\n");
-            this.viewer.printString("3 - load trains from file\n");
-            this.viewer.printString("4 - generate random trains\n");
-            this.viewer.printString("5 - exit\n");
+        String menu = "\nWhat do you want to do:\n" +
+                      "1 - show all trains\n" +
+                      "2 - make request\n" +
+                      "3 - load trains from file\n" +
+                      "4 - generate random trains\n" +
+                      "5 - exit\n";
+
+        menuLoop: while (true) {
+            this.viewer.printString(menu);
 
             int answer = new Scanner(System.in).nextInt();
 
-            if (answer == 1) this.viewer.requestResponse(this.model.getAllInfo());
-            if (answer == 2) makeRequest();
-            if (answer == 3) readDataFromFile("./files/input.txt");
-            if (answer == 4) this.model = new RailwayStationModel();
-            if (answer == 5) break;
-
+            switch  (answer) {
+                case 1: this.viewer.requestResponse(this.model.getAllInfo()); break;
+                case 2: makeRequest(); break;
+                case 3: this.model.receiveData(readDataFromFile("./files/inputTrains.txt"));; break;
+                case 4: this.model.generateTrains(); break;
+                case 5: break menuLoop;
+            }
         }
 
 
     }
 
+    @Override
     public void makeRequest(){
-        this.viewer.printString("\nWhat type of request do you want to do:\n");
-        this.viewer.printString("1 - all trains that have seats\n");
-        this.viewer.printString("2 - trains by destination and time\n");
+        this.viewer.printString("\nWhat type of request do you want to do:\n" +
+                                "1 - all trains that have seats\n" +
+                                "2 - trains by destination and time\n");
 
         int answer = new Scanner(System.in).nextInt();
 
@@ -66,9 +75,9 @@ public class ConsoleController implements Controller{
         }
     }
 
-    private void readDataFromFile(String path) {
+    private String readDataFromFile(String path) {
 
-        String data;
+        String data = "";
 
         try {
             InputStream is = new FileInputStream(path);
@@ -84,11 +93,13 @@ public class ConsoleController implements Controller{
 
             data = sb.toString();
 
-            this.model.receiveData(data);
+            return data;
 
         } catch (IOException e) {
             System.out.print("\nFile reading error!\n");
         }
+
+        return data;
 
     }
 }
