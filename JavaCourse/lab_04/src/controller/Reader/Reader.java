@@ -1,4 +1,4 @@
-package controller;
+package controller.Reader;
 
 public interface Reader {
     int readInt();

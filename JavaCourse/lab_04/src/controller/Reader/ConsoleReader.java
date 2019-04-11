@@ -1,6 +1,5 @@
-package controller;
+package controller.Reader;
 
-import java.io.*;
 import java.util.Scanner;
 
 public class ConsoleReader implements Reader {
