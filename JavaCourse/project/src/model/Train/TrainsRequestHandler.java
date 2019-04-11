@@ -16,17 +16,21 @@ public class TrainsRequestHandler {
         //generateTrains(15);
     }
 
+    public TrainsRequestHandler(Train[] trains){
+        this.trains = trains;
+    }
+
     public TrainsRequestHandler(int numberOfTrains) {
         this.trains = new Train[numberOfTrains];
     }
 
-    public TrainsRequestHandler(String data) throws Exception {
+    public TrainsRequestHandler(String[] data) throws Exception {
         parseData(data);
     }
 
-    private void parseData(String data) throws Exception {
+    private void parseData(String[] trains) throws Exception {
 
-        String[] trains = data.split("\n");
+        //String[] trains = data.split("\n");
         this.trains = new Train[trains.length];
         for (int i = 0; i < trains.length; i++){
 
@@ -100,7 +104,38 @@ public class TrainsRequestHandler {
     }
 
     public Train[] getAllTrains() {
-        return this.trains;
+
+        int counter = 0;
+        Train[] temp = new Train[this.trains.length];
+
+        for (Train i:trains){
+            if (i != null) {
+                temp[counter++] = i;
+            }
+        }
+
+        Train[] result = new Train[counter];
+        System.arraycopy(temp, 0, result, 0, counter);
+
+        return result;
     }
 
+    public String[] getAllTrainsInCSV(){
+
+        int counter = 0;
+        Train[] temp = new Train[this.trains.length];
+
+        for (Train i:trains){
+            if (i != null) {
+                temp[counter++] = i;
+            }
+        }
+
+        String[] result = new String[counter];
+
+        for (int i = 0; i < counter; i++)
+            result[i] = temp[i].toComaSeparetedValuesString();
+
+        return result;
+    }
 }

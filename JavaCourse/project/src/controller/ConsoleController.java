@@ -1,8 +1,9 @@
 package controller;
-
+import controller.DataManager.*;
 import model.RailwayStationModel;
 import model.Time.Exceptions.TimeException;
 import model.Train.Exceptions.TrainException;
+import model.Train.*;
 import view.ConsoleTableTrainViewer;
 import view.ConsoleColors;
 
@@ -11,12 +12,20 @@ public class ConsoleController implements Controller {
     private ConsoleTableTrainViewer viewer;
     private RailwayStationModel model;
     private ConsoleReader reader;
+    private DataManager<String> CSVmanager;
+    private DataManager<Train> JSONmanager;
+    private String fileFromat;
+    private final String PATH = "./files/Trains";
+
 
     public ConsoleController() {
         this.viewer = new ConsoleTableTrainViewer();
         this.model = new RailwayStationModel();
         this.reader = new ConsoleReader();
-        this.model.setCities(this.reader.readFromFile("./files/inputCities.txt").split("\n"));
+        this.CSVmanager = new CSVDataManager();
+        this.JSONmanager = new JSONDataManager();
+        this.model.setCities(FileManager.readFile("./files/inputCities.txt").split("\n"));
+        this.fileFromat = "csv";
     }
 
     @Override
@@ -37,7 +46,8 @@ public class ConsoleController implements Controller {
                 "2 - make request\n" +
                 "3 - load trains from file\n" +
                 "4 - generate random trains\n" +
-                "5 - exit\n";
+                "5 - change file format\n" +
+                "6 - exit\n";
 
         menuLoop:
         while (true) {
@@ -55,12 +65,16 @@ public class ConsoleController implements Controller {
                         makeRequest();
                         break;
                     case 3:
-                        this.model.receiveData(this.reader.readFromFile("./files/inputTrains.txt"));
+                        this.loadData();
                         break;
                     case 4:
                         this.model.generateTrains();
                         break;
                     case 5:
+                        this.changeFileFormat();
+                        break;
+                    case 6:
+                        this.saveData();
                         break menuLoop;
                 }
             } catch (TrainException | TimeException e) {
@@ -71,6 +85,8 @@ public class ConsoleController implements Controller {
                 }
             } catch (Exception e) {
                 this.reader.resetReader();
+                this.viewer.printString("\nUnrecognized input!\n" +
+                                        "Please, try again.\n");
             }
 
         }
@@ -106,6 +122,39 @@ public class ConsoleController implements Controller {
             }
 
         }
+    }
+
+    @Override
+    public void loadData() throws Exception {
+        if (this.fileFromat.equals("csv")) {
+            this.model.receiveData(this.CSVmanager.readData(this.PATH + '.' + this.fileFromat));
+        }
+
+        if (this.fileFromat.equals("json")) {
+            this.model.receiveData(this.JSONmanager.readData(this.PATH + '.' + this.fileFromat));
+        }
+    }
+
+    @Override
+    public void saveData() {
+        if (this.fileFromat.equals("csv")) {
+            this.CSVmanager.writeData(this.PATH + '.' + this.fileFromat, this.model.getAllInfoInCSV());
+        }
+
+        if (this.fileFromat.equals("json")) {
+            this.JSONmanager.writeData(this.PATH + '.' + this.fileFromat, this.model.getAllInfo());
+        }
+    }
+
+    private void changeFileFormat(){
+        this.viewer.printString("\nIn what format of file you would like to save data:\n" +
+                "1 - csv\n" +
+                "2 - json\n");
+
+        int answer = this.reader.readInt();
+
+        if (answer == 1) this.fileFromat = "csv";
+        if (answer == 2) this.fileFromat = "json";
     }
 }
 

@@ -80,4 +80,23 @@ public class Train {
 
         return result.toString();
     }
+
+    public String toComaSeparetedValuesString(){
+        StringBuilder result = new StringBuilder();
+
+        result.append(String.format("%s,", this.destination));
+        result.append(String.format("%s,", this.number));
+        result.append(String.format("%s,", this.departureTime.toString()));
+        result.append(String.format("%s,", this.numberOfSeats));
+
+        for (int i:this.seats) {
+            result.append(String.format("%s,", i));
+        }
+
+        result.deleteCharAt(result.length() - 1);
+
+        result.append("\n");
+
+        return result.toString();
+    }
 }

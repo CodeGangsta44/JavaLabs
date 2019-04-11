@@ -13,13 +13,20 @@ public class RailwayStationModel implements Model<Train>{
     }
 
     @Override
-    public void receiveData(String data) throws Exception {
+    public void receiveData(String[] data) throws Exception {
         this.handler = new TrainsRequestHandler(data);
     }
 
+    public void receiveData(Train[] data) {
+        this.handler = new TrainsRequestHandler(data);
+    }
     @Override
     public Train[] getAllInfo() {
         return handler.getAllTrains();
+    }
+
+    public String[] getAllInfoInCSV() {
+        return handler.getAllTrainsInCSV();
     }
 
     @Override
