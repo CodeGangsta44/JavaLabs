@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="off" strict="true" name="XMLConfigTest"
+               packages="org.apache.logging.log4j.test">
+    <Properties>
+        <Property name="generalLog">./files/logs/general_log.log</Property>
+        <Property name="traceLog">./files/logs/trace.log</Property>
+        <Property name="errorLog">./files/logs/error.log</Property>
+        <Property name="controllerLog">./files/logs/controller/general.log</Property>
+        <Property name="modelLog">./files/logs/model/general.log</Property>
+        <Property name="viewerLog">./files/logs/viewer/general.log</Property>
+    </Properties>
+
+    <Appenders>
+        <Appender type="Console" name="STDOUT">
+            <Layout type="PatternLayout" pattern="%m MDC%X%n"/>
+        </Appender>
+
+        <Appender type="File" name="OnlyErrorFile" fileName="${errorLog}">
+            <Layout type="PatternLayout">
+                <Pattern>%d %p %C.%M %nMessage: %ex%n</Pattern>
+            </Layout>
+
+            <Filters>
+                <ThresholdFilter level="fatal" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="error"  onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+        </Appender>
+
+        <Appender type="File" name="OnlyTraceFile" fileName="${traceLog}">
+            <Layout type="PatternLayout">
+                <Pattern>%d %p %C.%M %nMessage: %m%n</Pattern>
+            </Layout>
+
+            <Filters>
+                <ThresholdFilter level="warn"  onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="fatal" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="debug" onMatch="DENY" onMismatch="NEUTRAL"/>
+
+                <ThresholdFilter level="trace"  onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+        </Appender>
+
+        <Appender type="RollingFile"
+                  name="AllDataFile"
+                  append="true"
+                  fileName="./files/logs/general/general.log"
+                  filePattern="./files/logs/general/general-%i.log">
+            <Layout type="PatternLayout">
+                <Pattern>%d %p %C.%M %nMessage: %m %ex%n</Pattern>
+            </Layout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="5 KB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="3"/>
+        </Appender>
+
+        <Appender type="File"
+                  name="controllerGeneralLogFile"
+                  fileName="${controllerLog}">
+            <Layout type="PatternLayout">
+                <Pattern>%d %p %C.%M %nMessage: %m %ex%n</Pattern>
+            </Layout>
+        </Appender>
+
+        <Appender type="File"
+                  name="modelGeneralLogFile"
+                  fileName="${modelLog}">
+            <Layout type="PatternLayout">
+                <Pattern>%d %p %C.%M %nMessage: %m %ex%n</Pattern>
+            </Layout>
+        </Appender>
+
+        <Appender type="File"
+                  name="viewerGeneralLogFile"
+                  fileName="${viewerLog}">
+            <Layout type="PatternLayout">
+                <Pattern>%d %p %C.%M %nMessage: %m %ex%n</Pattern>
+            </Layout>
+        </Appender>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="controllerLogger" level="all" additivity="true">
+            <AppenderRef ref="controllerGeneralLogFile"/>
+        </Logger>
+
+        <Logger name="modelLogger" level="all" additivity="true">
+            <AppenderRef ref="modelGeneralLogFile"/>
+        </Logger>
+
+        <Logger name="viewerLogger" level="all" additivity="true">
+            <AppenderRef ref="viewerGeneralLogFile"/>
+        </Logger>
+
+        <Root level="all">
+            <AppenderRef ref="AllDataFile"/>
+            <AppenderRef ref="OnlyTraceFile"/>
+            <AppenderRef ref="OnlyErrorFile"/>
+        </Root>
+    </Loggers>
+
+</Configuration>

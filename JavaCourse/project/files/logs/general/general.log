@@ -1,0 +1,72 @@
+2019-04-25 22:19:35,373 TRACE view.ConsoleTableTrainViewer.printString 
+Message: Viewer printing string: 
+What do you want to do:
+1 - show all trains
+2 - make request
+3 - load trains from file
+4 - generate random trains
+5 - change file format
+6 - exit
+
+ 
+2019-04-25 22:19:35,380 INFO controller.ConsoleController.menu 
+Message: Printed menu 
+2019-04-25 22:19:37,245 TRACE controller.ConsoleController.menu 
+Message: User entered: 2 
+2019-04-25 22:19:37,247 TRACE controller.ConsoleController.menu 
+Message: Making request 
+2019-04-25 22:19:37,249 TRACE controller.ConsoleController.makeRequest 
+Message: Entering requests menu 
+2019-04-25 22:19:37,252 TRACE view.ConsoleTableTrainViewer.printString 
+Message: Viewer printing string: 
+What type of request do you want to do:
+1 - all trains that have seats
+2 - trains by destination and time
+
+ 
+2019-04-25 22:19:38,929 TRACE controller.ConsoleController.makeRequest 
+Message: Getting all trains by destination and time 
+2019-04-25 22:19:38,931 TRACE view.ConsoleTableTrainViewer.printString 
+Message: Viewer printing string: 
+Please, enter destination: 
+ 
+2019-04-25 22:19:52,101 TRACE view.ConsoleTableTrainViewer.printString 
+Message: Viewer printing string: Please, enter time: 
+ 
+2019-04-25 22:19:54,702 TRACE model.RailwayStationModel.makeRequest 
+Message: Request handler returned all trains by destination and time 
+2019-04-25 22:19:54,705 TRACE view.ConsoleTableTrainViewer.requestResponse 
+Message: Viewer received resulting collection of trains 
+2019-04-25 22:19:54,705 TRACE view.ConsoleTableTrainViewer.getStringOfCollection 
+Message: Viewer casting collection to string 
+2019-04-25 22:19:54,706 TRACE view.ConsoleTableTrainViewer.createHeader 
+Message: Viewer generating table header for resulting collection 
+2019-04-25 22:19:54,707 TRACE view.ConsoleTableTrainViewer.printString 
+Message: Viewer printing string: 
+List of trains satisfying your request:
+|Destination:        |Number:   |Departure time:     |Seats:    |Coupe:    |P-card:   |Premium:  |
+--------------------------------------------------------------------------------------------------
+|Lutsk               |84        |10:43               |113       |61        |52        |0         |
+
+ 
+2019-04-25 22:19:54,709 TRACE view.ConsoleTableTrainViewer.printString 
+Message: Viewer printing string: 
+What do you want to do:
+1 - show all trains
+2 - make request
+3 - load trains from file
+4 - generate random trains
+5 - change file format
+6 - exit
+
+ 
+2019-04-25 22:19:54,710 INFO controller.ConsoleController.menu 
+Message: Printed menu 
+2019-04-25 22:19:59,689 TRACE controller.ConsoleController.menu 
+Message: User entered: 6 
+2019-04-25 22:19:59,691 TRACE controller.ConsoleController.menu 
+Message: Shutdown 
+2019-04-25 22:19:59,692 INFO controller.ConsoleController.saveData 
+Message: Saving trains to file 
+2019-04-25 22:19:59,694 TRACE model.RailwayStationModel.getAllInfo 
+Message: Request handler returned all trains 

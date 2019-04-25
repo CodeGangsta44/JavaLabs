@@ -1,0 +1,52 @@
+2019-04-25 22:18:27,903 INFO controller.ConsoleController.execute 
+Message: Starting execution of program 
+2019-04-25 22:18:27,918 INFO controller.ConsoleController.menu 
+Message: Starting menu loop 
+2019-04-25 22:18:27,922 INFO controller.ConsoleController.menu 
+Message: Printed menu 
+2019-04-25 22:19:24,630 TRACE controller.ConsoleController.menu 
+Message: User entered: 4 
+2019-04-25 22:19:24,633 TRACE controller.ConsoleController.menu 
+Message: Generating random trains 
+2019-04-25 22:19:24,644 INFO controller.ConsoleController.menu 
+Message: Printed menu 
+2019-04-25 22:19:28,732 TRACE controller.ConsoleController.menu 
+Message: User entered: 5 
+2019-04-25 22:19:28,735 TRACE controller.ConsoleController.menu 
+Message: Changing file format 
+2019-04-25 22:19:28,737 TRACE controller.ConsoleController.changeFileFormat 
+Message: Entering file format menu 
+2019-04-25 22:19:30,188 INFO controller.ConsoleController.changeFileFormat 
+Message: File format set JSON 
+2019-04-25 22:19:30,192 INFO controller.ConsoleController.menu 
+Message: Printed menu 
+2019-04-25 22:19:32,508 TRACE controller.ConsoleController.menu 
+Message: User entered: 3 
+2019-04-25 22:19:32,511 TRACE controller.ConsoleController.menu 
+Message: Loading trains from file 
+2019-04-25 22:19:32,513 INFO controller.ConsoleController.loadData 
+Message: Loading trains from file 
+2019-04-25 22:19:32,566 INFO controller.ConsoleController.menu 
+Message: Printed menu 
+2019-04-25 22:19:35,357 TRACE controller.ConsoleController.menu 
+Message: User entered: 1 
+2019-04-25 22:19:35,358 TRACE controller.ConsoleController.menu 
+Message: Printing all trains 
+2019-04-25 22:19:35,380 INFO controller.ConsoleController.menu 
+Message: Printed menu 
+2019-04-25 22:19:37,245 TRACE controller.ConsoleController.menu 
+Message: User entered: 2 
+2019-04-25 22:19:37,247 TRACE controller.ConsoleController.menu 
+Message: Making request 
+2019-04-25 22:19:37,249 TRACE controller.ConsoleController.makeRequest 
+Message: Entering requests menu 
+2019-04-25 22:19:38,929 TRACE controller.ConsoleController.makeRequest 
+Message: Getting all trains by destination and time 
+2019-04-25 22:19:54,710 INFO controller.ConsoleController.menu 
+Message: Printed menu 
+2019-04-25 22:19:59,689 TRACE controller.ConsoleController.menu 
+Message: User entered: 6 
+2019-04-25 22:19:59,691 TRACE controller.ConsoleController.menu 
+Message: Shutdown 
+2019-04-25 22:19:59,692 INFO controller.ConsoleController.saveData 
+Message: Saving trains to file 

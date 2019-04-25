@@ -1,0 +1,12 @@
+2019-04-25 22:18:27,897 INFO model.RailwayStationModel.setCities 
+Message: Request handler received list of cities 
+2019-04-25 22:19:24,636 TRACE model.RailwayStationModel.generateTrains 
+Message: Request handler generating random trains 
+2019-04-25 22:19:32,564 TRACE model.RailwayStationModel.receiveData 
+Message: Request handler received data 
+2019-04-25 22:19:35,359 TRACE model.RailwayStationModel.getAllInfo 
+Message: Request handler returned all trains 
+2019-04-25 22:19:54,702 TRACE model.RailwayStationModel.makeRequest 
+Message: Request handler returned all trains by destination and time 
+2019-04-25 22:19:59,694 TRACE model.RailwayStationModel.getAllInfo 
+Message: Request handler returned all trains 

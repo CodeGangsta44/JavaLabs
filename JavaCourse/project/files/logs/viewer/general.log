@@ -1,0 +1,136 @@
+2019-04-25 22:18:27,908 TRACE view.ConsoleTableTrainViewer.printString 
+Message: Viewer printing string: [1;37m
+ 
+2019-04-25 22:18:27,912 TRACE view.ConsoleTableTrainViewer.printString 
+Message: Viewer printing string: Виконав Довгополюк Р.Р.(залікова книжка №8)
+
+ 
+2019-04-25 22:18:27,919 TRACE view.ConsoleTableTrainViewer.printString 
+Message: Viewer printing string: 
+What do you want to do:
+1 - show all trains
+2 - make request
+3 - load trains from file
+4 - generate random trains
+5 - change file format
+6 - exit
+
+ 
+2019-04-25 22:19:24,641 TRACE view.ConsoleTableTrainViewer.printString 
+Message: Viewer printing string: 
+What do you want to do:
+1 - show all trains
+2 - make request
+3 - load trains from file
+4 - generate random trains
+5 - change file format
+6 - exit
+
+ 
+2019-04-25 22:19:28,739 TRACE view.ConsoleTableTrainViewer.printString 
+Message: Viewer printing string: 
+In what format of file you would like to save data:
+1 - csv
+2 - json
+
+ 
+2019-04-25 22:19:30,190 TRACE view.ConsoleTableTrainViewer.printString 
+Message: Viewer printing string: 
+What do you want to do:
+1 - show all trains
+2 - make request
+3 - load trains from file
+4 - generate random trains
+5 - change file format
+6 - exit
+
+ 
+2019-04-25 22:19:32,565 TRACE view.ConsoleTableTrainViewer.printString 
+Message: Viewer printing string: 
+What do you want to do:
+1 - show all trains
+2 - make request
+3 - load trains from file
+4 - generate random trains
+5 - change file format
+6 - exit
+
+ 
+2019-04-25 22:19:35,360 TRACE view.ConsoleTableTrainViewer.requestResponse 
+Message: Viewer received resulting collection of trains 
+2019-04-25 22:19:35,360 TRACE view.ConsoleTableTrainViewer.getStringOfCollection 
+Message: Viewer casting collection to string 
+2019-04-25 22:19:35,361 TRACE view.ConsoleTableTrainViewer.createHeader 
+Message: Viewer generating table header for resulting collection 
+2019-04-25 22:19:35,371 TRACE view.ConsoleTableTrainViewer.printString 
+Message: Viewer printing string: 
+List of trains satisfying your request:
+|Destination:        |Number:   |Departure time:     |Seats:    |Coupe:    |P-card:   |Premium:  |
+--------------------------------------------------------------------------------------------------
+|Vinnytsa            |83        |09:12               |56        |28        |17        |11        |
+|Cherkasy            |10        |20:18               |52        |29        |20        |3         |
+|Vinnytsa            |35        |16:24               |96        |74        |10        |12        |
+|Rivne               |45        |04:20               |140       |40        |84        |16        |
+|Mykolaiv            |77        |19:37               |98        |11        |72        |15        |
+|Vinnytsa            |59        |08:46               |104       |47        |49        |8         |
+|Kharkiv             |19        |08:31               |179       |78        |99        |2         |
+|Vinnytsa            |70        |08:29               |82        |25        |45        |12        |
+|Lutsk               |84        |10:43               |113       |61        |52        |0         |
+|Mykolaiv            |54        |07:35               |92        |16        |71        |5         |
+|Cherkasy            |30        |14:41               |86        |58        |13        |15        |
+|Mykolaiv            |30        |15:48               |94        |7         |68        |19        |
+|Kyiv                |53        |02:46               |113       |5         |98        |10        |
+|Rivne               |26        |15:30               |69        |27        |27        |15        |
+|Kharkiv             |96        |10:33               |150       |60        |80        |10        |
+
+ 
+2019-04-25 22:19:35,373 TRACE view.ConsoleTableTrainViewer.printString 
+Message: Viewer printing string: 
+What do you want to do:
+1 - show all trains
+2 - make request
+3 - load trains from file
+4 - generate random trains
+5 - change file format
+6 - exit
+
+ 
+2019-04-25 22:19:37,252 TRACE view.ConsoleTableTrainViewer.printString 
+Message: Viewer printing string: 
+What type of request do you want to do:
+1 - all trains that have seats
+2 - trains by destination and time
+
+ 
+2019-04-25 22:19:38,931 TRACE view.ConsoleTableTrainViewer.printString 
+Message: Viewer printing string: 
+Please, enter destination: 
+ 
+2019-04-25 22:19:52,101 TRACE view.ConsoleTableTrainViewer.printString 
+Message: Viewer printing string: Please, enter time: 
+ 
+2019-04-25 22:19:54,705 TRACE view.ConsoleTableTrainViewer.requestResponse 
+Message: Viewer received resulting collection of trains 
+2019-04-25 22:19:54,705 TRACE view.ConsoleTableTrainViewer.getStringOfCollection 
+Message: Viewer casting collection to string 
+2019-04-25 22:19:54,706 TRACE view.ConsoleTableTrainViewer.createHeader 
+Message: Viewer generating table header for resulting collection 
+2019-04-25 22:19:54,707 TRACE view.ConsoleTableTrainViewer.printString 
+Message: Viewer printing string: 
+List of trains satisfying your request:
+|Destination:        |Number:   |Departure time:     |Seats:    |Coupe:    |P-card:   |Premium:  |
+--------------------------------------------------------------------------------------------------
+|Lutsk               |84        |10:43               |113       |61        |52        |0         |
+
+ 
+2019-04-25 22:19:54,709 TRACE view.ConsoleTableTrainViewer.printString 
+Message: Viewer printing string: 
+What do you want to do:
+1 - show all trains
+2 - make request
+3 - load trains from file
+4 - generate random trains
+5 - change file format
+6 - exit
+
+ 

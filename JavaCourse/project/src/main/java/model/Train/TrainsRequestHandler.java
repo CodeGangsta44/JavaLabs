@@ -24,33 +24,6 @@ public class TrainsRequestHandler {
         this.trains = new Train[numberOfTrains];
     }
 
-    public TrainsRequestHandler(String[] data) throws Exception {
-        parseData(data);
-    }
-
-    private void parseData(String[] trains) throws Exception {
-
-        //String[] trains = data.split("\n");
-        this.trains = new Train[trains.length];
-        for (int i = 0; i < trains.length; i++){
-
-            try{
-                String[] current = trains[i].split(",");
-                String currDest = current[0];
-                int currNum = Integer.parseInt(current[1]);
-                Time currTime = new Time(current[2]);
-                int[] currSeats = new int[]{Integer.parseInt(current[4]), Integer.parseInt(current[5]), Integer.parseInt(current[6])};
-                this.trains[i] = new Train(currDest, currNum, currTime, currSeats);
-
-            } catch (TimeException e) {
-                ParseTrainException newExc = new ParseTrainException("Can`t parse row[" + i + "]: " + trains[i] + '\n');
-                newExc.initCause(e);
-                throw newExc;
-            }
-        }
-
-
-    }
 
     public void generateTrains() {
         for (int i = 0; i < this.trains.length; i++){
@@ -120,22 +93,4 @@ public class TrainsRequestHandler {
         return result;
     }
 
-    public String[] getAllTrainsInCSV(){
-
-        int counter = 0;
-        Train[] temp = new Train[this.trains.length];
-
-        for (Train i:trains){
-            if (i != null) {
-                temp[counter++] = i;
-            }
-        }
-
-        String[] result = new String[counter];
-
-        for (int i = 0; i < counter; i++)
-            result[i] = temp[i].toComaSeparetedValuesString();
-
-        return result;
-    }
 }
